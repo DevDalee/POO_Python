@@ -1,8 +1,6 @@
 def media(var):
     resultado = 0 
-    for x in range(len(var)):
-        resultado += x
-    tresultado = resultado / len(var)
+    tresultado = sum(resultado) / len(var)
     return tresultado
 
 def mediana(var):
@@ -18,10 +16,10 @@ def mediana(var):
         return var[meio]
 
 def variancia(var):
-    mediaa = media(var)
+    aaa = media(var)
     resultado = 0
     for x in range(len(var)):
-        resultado += ((var[x] - mediaa) ** 2)
+        resultado += ((var[x] - aaa) ** 2)
     resultadoo = resultado / len(var)
     return resultadoo-1
 
