@@ -6,7 +6,7 @@ while(True):
     print("Menu")
     print('-'*20)
     print("1 - Criar Conta")
-    print("2 - Listar Contas (Em produção)")
+    print("2 - Listar Contas")
     print("3 - Sacar Valor")
     print("4 - Depositar Valor")
     print("5 - Excluir Conta")
