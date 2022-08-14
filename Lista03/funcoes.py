@@ -1,3 +1,4 @@
+from random import randint
 
 class Conta:
 
@@ -6,12 +7,29 @@ class Conta:
         self.numero = numero
         self.saldo = saldo
 
+    def criar_conta(self, numero):
+        numero = randint(100, 1000)
+        self.numero = str(numero)
+
+        print('-' * 30)
+        print('Conta criada com sucesso!')
+        print(f'{self.numero} é o número da conta!')
+        print('-' * 30)
+        return str(numero)
+
     def sacar(self, valor):
         if valor <= self.saldo and valor > 0:
             self.saldo -= valor
             return f'Saque Realizado Com Sucesso'
         else:
             return f'Operação não realizada'
+
+    def extrato(self):
+        print(f'Titular da conta: {self.titular}')
+        print(f'Número da conta: {self.numero}')
+        print(f'Saldo da conta: R${self.saldo:.2f}')
+        print('\n')   
+
     def depositar(self, valor):
         if valor > 0:
             self.saldo += valor
@@ -24,6 +42,7 @@ class Conta:
             Conta.pop(numero)
             return f'Operação Realizada Com Sucesso!'
 
-    def listar(self):
-        print("Titular da conta: {} \n Numero: {} \nSaldo: {:.2f}".format(self.titular, self.numero, self.saldo))	
+    def listaContas(self, contas):
+        for chave, valor in contas.items():
+            valor.extrato()
     
