@@ -1,4 +1,5 @@
 from funcoes import Conta
+from conta import Titular
 
 contas = {}
 
@@ -10,13 +11,16 @@ while(True):
     print("3 - Sacar Valor")
     print("4 - Depositar Valor")
     print("5 - Excluir Conta")
-    print("6 - Sair")
+    print("6 - Realizar trasnferencia")
+    print("7 - Sair")
     escolha = int(input("Digite uma opção: "))
     print('-'*20)
 
     if escolha == 1:
         nome = str(input('Digite o nome do titular da conta: '))
-        criar = Conta(nome, '')
+        cpf = str(input('Digite o CPF: '))
+        titular = Titular(nome,cpf)
+        criar = Conta(titular, '')
         numero_conta = criar.criar_conta('')
         contas[numero_conta] = criar
 
@@ -70,4 +74,25 @@ while(True):
             criar.excluir(num)
             print('Conta Excluída com sucesso!')
     elif escolha == 6:
+        print('-'*20)
+        print('Contas Disponíveis!')
+        criar.listaContas(contas)
+        print('-'*20)
+
+        origem = str(input("Número da conta de origem: "))
+        destino = str(input("Número da conta de destino: "))
+
+        if origem in contas and destino in contas:
+            v_transferencia = float(input("Valor que deseja transferir: R$"))
+            print('-'*20)
+
+            if contas[origem].transferir(contas[destino], v_transferencia):
+                print("Operação concluida com sucesso! ")
+            else: 
+                print("Operação falhou! Saldo Insuficiente. ")
+        else:
+            print("Conta Inválida! ")
+        print('-'*20)
+
+    elif escolha == 7:
         break

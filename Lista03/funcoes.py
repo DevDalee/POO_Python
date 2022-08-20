@@ -25,7 +25,8 @@ class Conta:
             return f'Operação não realizada'
 
     def extrato(self):
-        print(f'Titular da conta: {self.titular}')
+        print(f'Titular da conta: {self.titular.nome}')
+        print(f'CPF do titular: {self.titular.cpf}')
         print(f'Número da conta: {self.numero}')
         print(f'Saldo da conta: R${self.saldo:.2f}')
         print('\n')   
@@ -45,4 +46,13 @@ class Conta:
     def listaContas(self, contas):
         for chave, valor in contas.items():
             valor.extrato()
+
+    def transferir(self, destino, valor):
+        operacao = self.sacar(valor)
+
+        if operacao == False:
+            return False
+        else:
+            destino.depositar(valor)
+            return True
     
