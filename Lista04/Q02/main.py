@@ -1,61 +1,62 @@
-from pessoa import Pessoa
+from pessoa import Agenda
 
-agenda = {}
-
-def listar():
+def menu():
     print('-' * 30)
-    print('Nomes na Agenda: \n')
-    c.listar_agenda(agenda)
+    print('MENU DE OPÇÕES')
     print('-' * 30)
 
-while True:
-    print(f'{"MENU PRINCIPAL":^30}')
-    print('-' * 30)
-    print('[1] - Armazenar Pessoa')
-    print('[2] - Remover Pessoa')
-    print('[3] - Buscar Pessoa')
-    print('[4] - Imprimir Agenda')
+    print('[1] - Armazena pessoa')
+    print('[2] - Remove pessoa')
+    print('[3] - Busca pessoa')
+    print('[4] - Imprime agenda')
     print('[0] - Sair')
     print('-' * 30)
-    resp = int(input('Digite sua opção: '))
 
-    if (resp == 0):
+agenda_dic = {}
 
+pessoa = 0
+while True:
+    if pessoa == 10:
+        print('Sua agendas está cheia, exclua um nome para adicionar mais')
         break
+    
+    menu()
+    op = int(input('Digite sua opção: '))
+    print('\n')
 
-    elif (resp == 1):
+    if (op == 0):
+        break
+    elif (op == 1):
+        pessoa += 1
 
-       nome = str(input('Digite o nome que deseja armazenar: ')).strip()
-       c = Pessoa(nome)
-       nomes = c.armazenar(nome)
+        nome = str(input('Nome: ')).strip()
+        idade = int(input('Idade: '))
+        altura = float(input('Altura: '))
+        print('\n')
 
-       if nomes not in agenda:
-        agenda[nome] = c
-       else:
-        while nomes in agenda:
-                nomes = c.armazenar(nome)
-        agenda[nome] = c
+        agenda = Agenda(nome, idade, altura)
+        agenda_dic[pessoa] = agenda
+        print('Salvo com sucesso!')
 
-    elif (resp == 2):
-        
-        listar()
-        nomex = str(input('Digite o nome que deseja excluir: ')).strip()
-        print('-' * 30)
-        if agenda[nomex] in agenda.items():
-            agenda.pop(nomex)
-            print('Nome removido com sucesso!')
+    elif (op == 2):
+        agenda.listar_ag(agenda_dic)
+        nome = str(input('Nome a ser excluído: '))
+        print('\n')
+
+        if (agenda.exclui(agenda_dic, nome)):
+            print('Nome Excluido com sucesso')
+            pessoa -= 1
         else:
-            print('Erro ao remover esse nome')
-        print('-'*30)
-
-    elif (resp == 3):
-
-        print('-'*30)
-        busca = str(input('Digite o nome que deseja buscar: '))
-        if(len(agenda) == 0):
-            print("Nenhum nome na agenda")
-        else: 
-            c.listar_agenda(agenda), print('Está na Agenda')
-
-    elif (resp == 4):
-        listar()
+            print('Pessoa não encontrada')
+    
+    elif (op == 3):
+        nome = str(input('Nome da pessoa a ser procurada: '))
+        print('\n')
+        
+        if (agenda.busca(agenda_dic, nome)):
+            print('Operação concluida')
+        else:
+            print('Pessoa não encontrada!')
+    
+    elif (op == 4):
+        agenda.listar_ag(agenda_dic)

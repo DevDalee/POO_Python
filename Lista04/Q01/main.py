@@ -1,10 +1,13 @@
 from funcoes import Func
-import datetime
 
-nome = str(input('Digite o Nome: '))
-Ano_nasci = int(input('Digite a Data de Nascimento: '))
-Altura = float(input('Digite a Altura: '))
+nome = str(input('Digite seu nome: ')).strip()
+ano = str(input('ANO -  ')).strip()
+mes = str(input('MÊS -  ')).strip()
+dia = str(input('DIA - ')).strip()
+nascimento = dia + '/' + mes + '/' + ano
+altura = float(input('Altura: '))
 
-Pessoa = Func(nome,Ano_nasci,Altura)
-for x in range(len(Pessoa)):
-    print(Pessoa)
+pessoa = Func(nome, nascimento, altura)
+
+pessoa.calc_idade(ano)
+pessoa.Mdados()
