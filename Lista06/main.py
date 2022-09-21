@@ -1,0 +1,12 @@
+def menu():
+    print("1 - Cadastrar Funcionario")
+    print("2 - Cadastrar Cliente")
+    print("3 - Criar Conta Corrente")
+    print("4 - Criar Conta Poupança")
+    print("5 - Criar Seguro de Vida")
+    print("6 - Calcular Tributação")
+    print("7 - Sacar")
+    print("8 - Depositar")
+    print("9 - Tranferir")
+    print("10 - Imprimir Histórico")
+    print("11 - Imprimir Contas")
