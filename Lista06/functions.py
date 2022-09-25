@@ -1,6 +1,11 @@
 from criar_conta import * 
 from datetime import datetime
-from random import randint
+from abc import *
+
+class calc_tributacao(ABC):
+    @abstractmethod
+    def calc_tributacao(self, saldo_cc, valor_sv):
+        pass
 class Historico:
 
     def __init__(self):
@@ -26,6 +31,7 @@ class Funcs():
         self.numero = numero
         self.historico = Historico() 
         self.saldo = saldo
+        
     @property
     def saldoc(self):
         return self.__saldo
@@ -37,24 +43,6 @@ class Funcs():
     @property
     def historico(self):
         return self.__historico
-    
-    def cria_conta_corrente(self, numero, historico, saldo = 0 ):
-        numero = randint(1000, 10000)
-        self.numeroc = numero
-        
-        print('-'*20)
-        print('Conta Criada Com Sucesso!')
-        print(f'{self.numeroc} é o número da conta!')
-        return str(numero)
-        
-    def cria_conta_poup(self, numero, historico ,saldo = 0):
-        numero = randint(100,1000)
-        self.numerop = numero
-        print('-'*20)
-        print('Conta Criada Com Sucesso!')
-        print(f'{self.numerop} é o número da conta!')
-        print('-'*20)
-        return str(numero)
     
     def depositar(self, valor):
         atual = 0
