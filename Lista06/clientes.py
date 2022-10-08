@@ -80,7 +80,7 @@ class Clientes():
             return False
 
 
-seguros = {}
+bd_Seguros = {}
 class SeguroDeVida(Clientes):
     def __init__(self, cpf, valor_mensal, valor_tot):
         self.__cpf = cpf
@@ -112,8 +112,8 @@ class SeguroDeVida(Clientes):
         self.__valor_tot = novo_val
 
     def criar_seguro(self, cpf, seguro):
-        if (cpf not in seguros):
-            seguros[cpf] = []
-            seguros[cpf].append(seguro)
+        if (cpf not in bd_Seguros):
+            bd_Seguros[cpf] = []
+            bd_Seguros[cpf].append(seguro)
         else:
-            seguros[cpf].append(seguro)
+            bd_Seguros[cpf].append(seguro)

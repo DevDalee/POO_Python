@@ -48,8 +48,8 @@ class Functions:
                     if cpf_cont == cpf_cli:
                         print(f'Nome -> {bd_Clientes[cpf_cont].get_nome}')
                         print(f'Número de contas -> {bd_Clientes[cpf_cont].get_qnt_contas}')
-                if (cpf_cont in seguros):
-                    print(f'Seguros de vida -> {len(seguros[cpf_cont])}')
+                if (cpf_cont in bd_Seguros):
+                    print(f'Seguros de vida -> {len(bd_Seguros[cpf_cont])}')
                 else:
                     print('Seguros de vida -> 0')
 
@@ -59,8 +59,8 @@ class Functions:
             return False        
 
 
-    def verifica_cadadastro(self, cpf_cadastrado):
-        bd_Clientes[cpf_cadastrado].verifica_cadastro
+    def verifica_cadadastro(self, cpf_cad):
+        bd_Clientes[cpf_cad].verifica_cadastro
 
     def criar_conta_corrente(self, cpf, tipo = 'Conta Corrente'):
         conta_corrente = ContaCorrente()
@@ -83,19 +83,19 @@ class Functions:
         except:
             return False
     
-    def criar_seguro(self, cpf, valor_mens, valor_tot):
-        seguro = SeguroDeVida(cpf, valor_mens, valor_tot)
+    def criar_seguro(self, cpf, valor_mes, valor_total):
+        seguro = SeguroDeVida(cpf, valor_mes, valor_total)
         seguro.criar_seguro(cpf, seguro)
     
-    def operacao(self, cpf, tipo_op, valor, tipo_conta):
-        if (tipo_op == 7):
+    def operacao(self, cpf, tipo, valor, tipo_conta):
+        if (tipo == 7):
             
             for classe in bd_Contas[cpf]:
                 if classe.get_tipo == tipo_conta:
                     classe.sacar(valor)
             return True
 
-        elif (tipo_op == 8):
+        elif (tipo == 8):
 
             for classe in bd_Contas[cpf]:
                 if classe.get_tipo == tipo_conta:
@@ -105,11 +105,11 @@ class Functions:
         else:
             return False
     
-    def transfere(self, cpf_origem, cpf_destino, valor, tipo_conta_origem, tipo_conta_destino):
+    def transfere(self, cpfO, cpfD, valor, tipo_origem, tipo_destino):
         try:
-            for classe in bd_Contas[cpf_origem]:
-                if classe.get_tipo == tipo_conta_origem:
-                    classe.transfere(cpf_destino, tipo_conta_destino, valor)
+            for classe in bd_Contas[cpfO]:
+                if classe.get_tipo == tipo_origem:
+                    classe.transfere(cpfD, tipo_destino, valor)
                 return True
         except:
             return False
@@ -131,8 +131,8 @@ class Functions:
             for conta in valor:
                 if conta.get_tipo == 'Conta Corrente':
 
-                    if cpf in seguros:
-                        for classe in seguros[cpf]:
+                    if cpf in bd_Seguros:
+                        for classe in bd_Seguros[cpf]:
                             tributacao_clientes[cpf] = 10 + 0.01 * conta.get_saldo + 0.02 * classe.get_valor_mensal
                     else:
                         return False

@@ -43,11 +43,11 @@ def Operacao_2():
 
 def Operacao_3():
 
-    resp = str(input('Possui cadastro? [s/n]')).strip().lower()
+    resp = str(input('Possui cadastro? [s / n]')).strip().lower()
     print("-"*20)
 
-    if (resp in 'sn'):
-        if (resp == 's'):
+    if (resp in 's / n'):
+        if (resp =='s'):
             cpf_cadastrado = str(input('Digite o CPF cadastrado: ')).strip()
             print("-"*20)
             
@@ -68,10 +68,10 @@ def Operacao_3():
         return False         
 
 def Operacao_4():
-    resp = str(input('Possui cadastro? [s/n]')).strip().lower()
+    resp = str(input('Possui cadastro? [s / n]')).strip().lower()
     print("-"*20)
 
-    if (resp in 'sn'):
+    if (resp in 's / n'):
         if (resp == 's'):
             cpf_cadastrado = str(input('Digite o CPF cadastrado: ')).strip()
             print("-"*20)
@@ -93,8 +93,8 @@ def Operacao_4():
         return False
 
 def Operacao_5():
-    valor_mensal = float(input('Valor mensal a ser pago: '))
-    valor_tot = float(input('Valor total do seguro: '))
+    valor_mensal = float(input('Custo Mensal: '))
+    valor_tot = float(input('Custo total: '))
     cpf_cadas = str(input('CPF cadastrado: ')).strip()
     
     print("-"*20)
@@ -112,16 +112,14 @@ def Operacao_6():
     if (type(hist_trib) == list):
         for i in range(0, len(hist_trib)):
             print(f'{i + 1} tributação = {hist_trib[i]}')
-    '''else:
-        return False'''
-
+            
 def Operacao_7():
-    print('CPFs com cadastro no Functions e suas respectivas contas')
+    print('CPFs com cadastro no banco e suas respectivas contas')
     print("-"*20)
 
     Functions.exibe_contas()
-    cpf_op = str(input('CPF da conta a ser realizada a operação: ')).strip()
-    tipo_cont = int(input('Tipo de conta da operação, [1] - Corrente | [2] - Poupança: '))
+    cpf_op = str(input('CPF da conta: ')).strip()
+    tipo_cont = int(input('Tipo de conta, [1] - Corrente | [2] - Poupança: '))
     valor = float(input('Valor a ser sacado: '))
     print("-"*20)
 
@@ -140,12 +138,12 @@ def Operacao_7():
         return False
 
 def Operacao_8():
-    print('CPFs com cadastro no Functions e suas respectivas contas')
+    print('CPFs com cadastro no banco e suas respectivas contas')
     print("-"*20)
 
     Functions.exibe_contas()
-    cpf_op = str(input('CPF da conta a ser realizada a operação: ')).strip()
-    tipo_cont = int(input('Tipo de conta da operação, [1] - Corrente | [2] - Poupança: '))
+    cpf_op = str(input('CPF da conta: ')).strip()
+    tipo_cont = int(input('Tipo de conta, [1] - Corrente | [2] - Poupança: '))
     valor = float(input('Valor a ser depositado: '))
     print("-"*20)
 
@@ -161,15 +159,15 @@ def Operacao_8():
         return False
     
 def Operacao_9():
-    print('CPFs com cadastro no Functions e suas respectivas contas')
+    print('CPFs com cadastro no banco e suas respectivas contas')
     print("-"*20)
 
     Functions.exibe_contas()
     cpf_op_origem = str(input('CPF da conta de origem a ser realizada a operação: ')).strip()
-    tipo_cont_origem = int(input('Tipo de conta da operação, [1] - Corrente | [2] - Poupança: '))
+    tipo_cont_origem = int(input('Tipo de conta, [1] - Corrente | [2] - Poupança: '))
     valor = float(input('Valor da transferência: '))
-    cpf_op_destino = str(input('CPF da conta de destino: ')).strip()
-    tipo_cont_destino = int(input('Tipo de conta da operação, [1] - Corrente | [2] - Poupança: '))
+    cpf_op_destino = str(input('CPF da conta: ')).strip()
+    tipo_cont_destino = int(input('Tipo de conta, [1] - Corrente | [2] - Poupança: '))
     print("-"*20)
 
     if tipo_cont_origem == 1 and tipo_cont_destino == 1:
@@ -191,13 +189,13 @@ def Operacao_9():
         return False
 
 def Operacao_10():
-    print('CPFs com cadastro no Functions e suas respectivas contas')
+    print('CPFs com cadastro no banco e suas respectivas contas')
     print("-"*20)
 
     Functions.exibe_contas()
 
     cpf_op = str(input('CPF para consulta: ')).strip()
-    tipo_cont = int(input('Tipo de conta da consulta, [1] - Corrente | [2] - Poupança: '))
+    tipo_cont = int(input('Tipo de conta, [1] - Corrente | [2] - Poupança: '))
     print("-"*20)
 
     if tipo_cont == 1:
@@ -211,13 +209,13 @@ def Operacao_10():
 
 def Operacao_11():
     print(f'Número de contas cadastradas: {Functions.get_num_contas}')
-    print(f'Clientes cadastrados com conta bancária: ')
+    print(f'Clientes cadastrados e suas contas: ')
     
     try:
         Functions.exibe_clientes()
         return True
     except:
-        print('Nenhum cliente com conta bancária!')
+        print('Nenhum cliente tem conta!')
 
 while True:
     menu()
@@ -233,9 +231,9 @@ while True:
         
         print("-"*20)
         if funcionario.preenche_funcionario(funcionario):
-            print("OPERAÇÃO REALIZADA COM SUCESSO!")
+            print("Operação Realizada Com Sucesso!")
         else:
-            print("ERRO!")
+            print("Erro na operação!")
 
     elif (operacao == 2):
         nome, cpf, nasc, profissao = Operacao_2()
@@ -244,15 +242,15 @@ while True:
 
         print("-"*20)
         if (cliente.preenche_clientes(cliente)):
-            print("OPERAÇÃO REALIZADA COM SUCESSO!")
+            print("Operação Realizada Com Sucesso!")
         else:
-            print("ERRO!")
+            print("Erro na operação!")
 
     elif (operacao == 3):
         print("-"*20)
         
         if (Operacao_3()):
-            print('OPERAÇÃO REALIZADA COM SUCESSO!')
+            print('Operação Realizada Com Sucesso!')
         else:
             print('ERRO AO ABRIR A CONTA!')
 
@@ -260,42 +258,42 @@ while True:
         print("-"*20)
         
         if (Operacao_4()):
-            print('OPERAÇÃO REALIZADA COM SUCESSO!')
+            print('Operação Realizada Com Sucesso!')
         else:
             print('ERRO AO ABRIR A CONTA!')
     elif (operacao == 5):
         if (Operacao_5()):
-            print("OPERAÇÃO REALIZADA COM SUCESSO!")
+            print("Operação Realizada Com Sucesso!")
         else:
-            print("ERRO!")
+            print("Erro na operação!")
 
     elif (operacao == 6):
         Operacao_6()
     elif (operacao == 7):
         if(Operacao_7()):
-            print('SAQUE EFETUADO COM SUCESSO!')
+            print('Saque Realizado!')
         else:
             print('ERRO NO SAQUE!')
     
     elif (operacao == 8):
         if (Operacao_8()):
-            print('DEPÓSITO EFETUADO COM SUCESSO!')
+            print('Depósito Realizado!')
         else:
-            print('ERRO NO DEPÓSITO!')
+            print('Falha Ao Depositar')
 
     elif (operacao == 9):
         if (Operacao_9()):
-            print('TRANSFERÊNCIA EFETUADA COM SUCESSO!')
+            print('Transferencia Realizada!')
         else:
-            print('ERRO NA TRANSFERÊNCIA!')
+            print('Falha Na Transferencia!')
 
     elif (operacao == 10):
         try:
             Operacao_10()
         except:
-            print('ERRO NA OPERAÇÃO!')
+            print('Falha Na Operação!')
     elif (operacao == 11):
         try:
             Operacao_11()
         except:
-            print('ERRO NA OPERAÇÃO!') 
+            print('Falha Na Operação') 

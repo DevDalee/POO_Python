@@ -87,15 +87,15 @@ class Conta(ABC):
         else:
             return False
     
-    def transfere(self, cpf_dest, tipo_destino, valor):
+    def transfere(self, cpf, tipo, valor):
         retirou = self.sacar(valor)
 
         if (retirou):
-            for classe in bd_Contas[cpf_dest]:
-                if classe.get_tipo == tipo_destino:
+            for classe in bd_Contas[cpf]:
+                if classe.get_tipo == tipo:
                     classe.depositar(valor)
             
-            self.get_historico.transacoes_c.append(f'Transferência de R${valor} - Para conta de {bd_Contas[cpf_dest].get_numero}')
+            self.get_historico.transacoes_c.append(f'Transferência de R${valor} - Para conta de {bd_Contas[cpf].get_numero}')
             return True
         else:
             return False
