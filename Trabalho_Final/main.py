@@ -267,7 +267,7 @@ while True:
     if not os.path.isfile(path):
         print("*" * 30 + "Miau Lanches" + "*" * 30 + "\n")
         print(" " * 30 + "Seja Bem-Vindo" + " " * 30 + "\n")
-        senha = input("Senha: ")
+        senha = input("Primeiro Cadastre uma Senha: ")
         val.criar_arquivo_senhas_json(senha)   
     
     print("*" * 30 + "Miau Lanches" + "*" * 30 + "\n"
