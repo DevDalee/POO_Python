@@ -1,11 +1,11 @@
-Service,Price(R$)
-Tent (10x10),400.00
-Chairs (50 units),100.00
-Tables (10 units),80.00
-Table cloths (10),20.00
-Food delivery,10.00
-Special music (h),50.00
-Lunch card (30 d),500.00
-Lunch card (10 d),220.00
-Lunch card (7 d),200.00
-Calling taxi,5.00
+Serviços,Price(R$)
+Chamar Taxi , 5.00
+Entrega De Pacotes, 20.00
+Entrega De Comida, 10.00
+Montar Cadeiras, 50.00
+Montar Mesas, 80.00
+Musica Ao Vivo, 50.00
+Vale Refeição (7 dias), 200.00
+Vale Refeição (10 dias), 220.00
+Vale Refeição (30 dias), 500.00
+Pulseira Vip Nas Festas, 850.00
