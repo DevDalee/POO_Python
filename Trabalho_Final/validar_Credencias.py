@@ -2,7 +2,7 @@ from interface import Interface
 import os.path
 
 class Validar(Interface):
-    def criar_arquivo_senhas_json(self,senha):
+    def criar_arq_senhas(self,senha):
         arquivo = open("senhas.json","w")
         arquivo.write(senha)
         arquivo.close()  

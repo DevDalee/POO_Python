@@ -47,8 +47,8 @@ class MainMenu():
                 time.sleep(1)
          
 class File(MainMenu):
-    headerComida      = ["Comida", "Preço"]
-    headerBebida     = ["Bebida", "Preço"]
+    headerComida    = ["Comida", "Preço"]
+    headerBebida    = ["Bebida", "Preço"]
     headerServico   = ["Serviço", "Preço"]
     
     def Comida(self):
@@ -205,9 +205,9 @@ class Pagar(MainMenu):
     def displayPagar(self):
         print("*" * 32 + "Área de Pagamento" + "*" * 33 + "\n")
         print(f"Total Price: R${Pagar.PrecoTotal}")
-        Pagar.ProcessPagar(self)
+        Pagar.ProcessarPagar(self)
     
-    def ProcessPagar(self):
+    def ProcessarPagar(self):
         print("\n (P) Pagar          (M) Menu           (D) Disistir Da Compra          (S) Sair\n" + "_" * 72)
         input_1 = str(input("Please Select Your Operation: ")).upper()
         while True:
@@ -233,8 +233,8 @@ class Pagar(MainMenu):
             else:
                 print(f"\nErro: Valor Inválido({str(input_1)}). Tente Novamente!")
 
-class Seller():
-    def displaySales():
+class HistoricoPedidos():
+    def displayHPedidos():
         os.system('cls')
         print("*" * 30 + "Histórico de Compras" + "*" * 30 + "\n")
         rowID = []; counter = 0; data = []; headers = ["Data","Item","Preço(R$)","Quantidade","Valor Total"]
@@ -268,18 +268,18 @@ while True:
         print("*" * 30 + "Miau Lanches" + "*" * 30 + "\n")
         print(" " * 30 + "Seja Bem-Vindo" + " " * 30 + "\n")
         senha = input("Primeiro Cadastre uma Senha: ")
-        val.criar_arquivo_senhas_json(senha)   
+        val.criar_arq_senhas(senha)   
     
     print("*" * 30 + "Miau Lanches" + "*" * 30 + "\n"
         "\t(H) Histórico de Pedidos\n",
         "\t(C) Comprar\n",
         "_" * 70)
-    input_1 = str(input("Digite a sua escolha: ")).upper() # prompt next operation
+    input_1 = str(input("Digite a sua escolha: ")).upper()
     if input_1 == 'H':
-        Seller.displaySales() # navigate to order page
+        HistoricoPedidos.displayHPedidos()
         break
     elif input_1 == 'C':
-        mainMenu.displayMainMenu() # display report of sales
+        mainMenu.displayMainMenu() 
         break
     else:
-        print(f"\nErro: Valor Inválido({str(input_1)}). Tente Novamente!") # error checking
+        print(f"\nErro: Valor Inválido({str(input_1)}). Tente Novamente!")
