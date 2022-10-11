@@ -8,11 +8,11 @@ from tabulate import tabulate
 from validar_Credencias import *
 
 
-caminho_Comida = "C:/Users/mdcli/Documents/POO_Python/Trabalho_Final/files/listaComidas.csv"
-caminho_Bebida = "C:/Users/mdcli/Documents/POO_Python/Trabalho_Final/files/listaBebidas.csv"
-caminho_Servico = "C:/Users/mdcli/Documents/POO_Python/Trabalho_Final/files/listaServicos.csv"
-caminho_historico = "C:/Users/mdcli/Documents/POO_Python/Trabalho_Final/files/listaReport.csv"
-caminho_historico_fsd = "C:/Users/mdcli/Documents/POO_Python/Trabalho_Final/files/report.fsd"
+caminho_Comida = "Preencha com o seu caminho e adicione o nome do arquivo csv"
+caminho_Bebida = "Preencha com o seu caminho e adicione o nome do arquivo csv"
+caminho_Servico = "Preencha com o seu caminho e adicione o nome do arquivo csv"
+caminho_historico = "Preencha com o seu caminho e adicione o nome do arquivo csv"
+caminho_historico_fsd = "Preencha com o seu caminho e adicione o nome do arquivo fsd"
     
 class MainMenu():
     def __init__(self, listaComida, listaBebida, listaServico, listaPriceComida, listaPriceBebida, listaPriceServico, listaOrder):
