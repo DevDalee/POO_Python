@@ -7,13 +7,6 @@ import time
 from tabulate import tabulate
 from validar_Credencias import *
 
-
-caminho_Comida = "Preencha com o seu caminho e adicione o nome do arquivo csv"
-caminho_Bebida = "Preencha com o seu caminho e adicione o nome do arquivo csv"
-caminho_Servico = "Preencha com o seu caminho e adicione o nome do arquivo csv"
-caminho_historico = "Preencha com o seu caminho e adicione o nome do arquivo csv"
-caminho_historico_fsd = "Preencha com o seu caminho e adicione o nome do arquivo fsd"
-    
 class MainMenu():
     def __init__(self, listaComida, listaBebida, listaServico, listaPriceComida, listaPriceBebida, listaPriceServico, listaOrder):
         self.comida = listaComida
@@ -59,7 +52,7 @@ class File(MainMenu):
     
     def Comida(self):
         rowID = []; counter = 0
-        with open(r"caminho_Comida", mode='r') as fileComidas:
+        with open(r"C:/Users/mdcli/Documents/POO_Python/Trabalho_Final/files/listaComidas.csv", mode='r') as fileComidas:
             csv_reader = csv.reader(fileComidas, delimiter=',')
             next(csv_reader, None)
             for row in csv_reader:
@@ -70,7 +63,7 @@ class File(MainMenu):
     
     def Bebida(self):
         rowID = []; counter = 0
-        with open(r"caminho_Bebida", mode='r') as fileBebidas:
+        with open(r"C:/Users/mdcli/Documents/POO_Python/Trabalho_Final/files/listaBebidas.csv", mode='r') as fileBebidas:
             csv_reader = csv.reader(fileBebidas, delimiter=',')
             next(csv_reader, None) 
             for row in csv_reader:
@@ -81,7 +74,7 @@ class File(MainMenu):
     
     def Servico(self):
         rowID = []; counter = 0
-        with open(r"caminho_Servico", mode='r') as fileServicos:
+        with open(r"C:/Users/mdcli/Documents/POO_Python/Trabalho_Final/files/listaServicos.csv", mode='r') as fileServicos:
             csv_reader = csv.reader(fileServicos, delimiter=',')
             next(csv_reader, None)
             for row in csv_reader:
@@ -169,7 +162,7 @@ class Report(MainMenu):
     headerReport   = ["Pedido", "Preço (R$)", "Quantidade"]
     data = []
     def SaveReport(self):
-        with open(r"caminho_historico_fsd", mode='a') as fileReport:
+        with open(r"C:/Users/mdcli/Documents/POO_Python/Trabalho_Final/files/report.fsd", mode='a') as fileReport:
             fileReport.write(f"\nDATE: {str(datetime.datetime.now())[:19]} Total: RM {Pagar.PrecoTotal}\n")
             fileReport.write(tabulate(self.order, headers=Report.headerReport, tablefmt="psql", stralign='center'))
             fileReport.write("\n")
@@ -201,7 +194,7 @@ class Report(MainMenu):
             Report.data.extend([OrderMenu.date[i]])
             Report.data.extend(self.order[i])
             Report.data.extend([OrderMenu.PrecoTotal[i]])
-            with open(r"caminho_historico", mode='a', newline='') as fileReport:
+            with open(r"C:/Users/mdcli/Documents/POO_Python/Trabalho_Final/files/listaReport.csv", mode='a', newline='') as fileReport:
                 writer = csv.writer(fileReport)
                 writer.writerow(Report.data)
             Report.data.clear()
@@ -244,7 +237,7 @@ class HistoricoPedidos():
         os.system('cls')
         print("*" * 30 + "Histórico de Compras" + "*" * 30 + "\n")
         rowID = []; counter = 0; data = []; headers = ["Data","Item","Preço(R$)","Quantidade","Valor Total"]
-        with open(r"caminho_historico", mode='r') as fileSales:
+        with open(r"C:/Users/mdcli/Documents/POO_Python/Trabalho_Final/files/listaReport.csv", mode='r') as fileSales:
             csv_reader = csv.reader(fileSales, delimiter=',')
             next(csv_reader, None)
             for row in csv_reader:
